@@ -156,20 +156,47 @@
 					Our project has the aim to help others improve their aim. We will achieve this by giving the user an application that allows them to practise their aim in short high intensity tasks, similar to a HIIT (high intensity interval training) workout. This is done through a short 60 second task where a user has the intention of achieving a high score, calculated by the amount of targets shot minus the amount of times the user missed, although the scoring system will become improved over time as more functions are implemented to differentiate between similar scores. Currently while developing a prototype application the current functions include score, shots missed and a countdown timer. 
 				</p>
 				<p>
-					Upon opening this application the user is greeted with a main menu featuring a “play” button, “options” button and “quit” button which all currently function. Although upon pressing play the game level lighting appears different compared to game scene whilst editing it, this creating an obstacle which will have to be overcome. Once this project is completed there should be a range of tasks to target specific skills required within the game for the user to improve, an accurate scoring system and smooth transitioning between game, menu and end screen.
+					Upon opening this application the user is greeted with a main menu featuring a “play” button, “options” button and “quit” button which all currently function. Although upon pressing play the game level lighting appears different compared to game scene whilst editing it, this creating an obstacle which will have to be overcome. Once this project is completed, there should be a range of tasks to target specific skills required within the game for the user to improve, an accurate scoring system and smooth transitioning between game, menu and end screen.
 				</p>
 				<p>
-					How it began
+					As many of our group members enjoy playing video games, and some have also used similar existing programs we decided that this would be a good project to create. Although there's already free ones, we aim to provide more features, stats and customizability than those, whilst aiming to create one better than paid applications. To achieve this task must be created that focus on specific skills to ensure that the user is able to improve through muscle memory and intensive work within those areas, as well as being able to provide statistics of each attempt to show improvement and what still needs to be improved. 
 				</p>
 				<p>
-					Plan
+					The plan to create this is to separate the application into smaller separate tasks (main menu, game scene, score screen) and within each scene, create smaller tasks to eventually achieve a fully functional app. To begin I would create a main menu, over time this can be improved, but for the sake of the prototype it would have a play button, options button and quit button. The play button would change the scene so the user is able to play the game, options would give the user their own customisability and finally quit would close the application. After this was done the game scene would be created, starting by adding the character and camera movement, sensitivity adjustment and a weapon for the user to hold. Once the character is complete then there would have to be targets for them to shoot, done by using spheres and making them respawn in a random location once shot, which would also require the user the ability to shoot. Once shooting and respawning is done then there would need to be a countdown and thcore and misses counter, as well as a return to menu so the user is able to leave mid game if they’d like. To complete the functionality of the app there would be an end screen which would allow the user to play again or close the application.
 				</p>
 				<p>
-					Progress (include dead ends / decisions)
+					Progress:
+				</p>
+				<p>
+					<b>Main menu</b> - To begin the main menu an image was imported and changed to a sprite (2D and UI) and a canvas was added to the unity scene, as well as a panel so that the image can be added as the background.
+				</p>
+				<p>
+					Then a few buttons were added so that the user can change scenes, open options and close the game. For the play button a PlayGame() function was added to change the scene on button press, then the quit button was set to a QuitGame() function that would close the application and lastly the options button which would require the most work out of the three main menu buttons. This required another menu (in the same scene) which would be disabled and enabled based when the buttons are pressed to show the options menu, as well as close it.
+				</p>
+				<p>
+					<b>Game scene</b> - Now that the prototype menu is done a new scene for the game was added and also added into the build settings. This was the game scene, upon creating it the first things added were a few walls and a floor that could be used as a basic area. After this a cylinder was added to the scene and the camera was placed in it so that it would act as the user. For the user to be able to look around a PlayerScript was added to the player object, in this it would lock the users cursor to the middle of the screen as well as make it invisible so that the user could aim and stay tabbed into the game. To allow the player to look around a script was written to get the mouse inputs of the X and Y axis using Vector3, as well as clamping the Y axis 90 and -90 degrees so the user can’t look 360 degrees vertically. 
+				</p>
+				<p>
+					In order to shoot targets there would need to be both a crosshair and a method of shooting. This was done by adding a canvas to the scene and a small square image centered in the canvas to act as the crosshair (which would later become customisable). To solve the shooting a new script was added to create a raycast when mouse1 was pressed.
+				</p>
+				<p>
+					The target was then added as a sphere so that the raycast could be tested. When the target was hit, a script was then made to respawn the target in a random location, defined within an area made using an empty object with a box collider (disabled) and a script to find a random value for each the X, Y and Z axis within the box collider and reposition the target there. 
+				</p>
+				<p>
+					Now that both the players ability to shoot and the target was made, within the raycast script, another few lines of code were added to check if the raycast hit a target, if a target was hit then a textbox would update to shot the amount of hits, else if the raycast did not collide with a target then a text box for misses would be updated and this would show the user the amount of hits and misses they had. To create a scoring system each target would give the user 10 points, each miss would minus 5 points and the end amount of misses would also be minused from the total, to prevent negative scores, if the score was less than or equal to 0 then the score would equal 0.
+				</p>
+				<p>
+					<b>End scene</b> - finally to finish the prototype the last scene was added to display scores and allow the user to play again or quit. This was done by once again adding a canvas and creating a background to the scene, as well as a button to change scene back to the previous (game) one to play again, with an option to quit the game. For the main purpose of this scene (to display scores) a few text boxes were added to show the hits, misses and final score. These were values updated whilst in game and were called upon during this scene to display for the user.
+				</p>
+				<p>
+					This is the current progress for the prototype, all functions currently working and the game is playable. Roadblocks along the way were many coding issues that were resolved over time by re-reading the code or trying to change it. There were issues with lighting whilst testing the game within the unity engine but once the game was built these issues went away.
+				</p>
+				<p>
+					Hopefully with more testing more issues will be discovered so that they may be fixed to iron out the quality of the game and as we progress further more tasks will be added to give the user more options than the current prototype.
 				</p>
 				<h4>Roles</h4>
 				<p>
-					
+					For this project, our group has not defined roles for participants. Instead, we have split up sections of the assignment and assigned it to each member, making it clear that certain segments of the assignment would be harder and more time consuming to complete compared to other parts. The reason for not defining roles in our opinion is due to our group not being well-suited and skilled enough to specialise in roles such as Lead Developer, Technical Designer, User Interface Designer and so on. In order to combat not having such roles defined, our group has decided that the focus of the project was the prototype/artifact segment, therefore, we’ve agreed that once group members have completed their assigned segment in the assignment, this area would require the most attention and assistance.
 				</p>
 				<h4>Scope and Limits</h4>
 				<p>
@@ -212,11 +239,7 @@ Refinement and improvement will be done on the bases of user testing and feedbac
 				</p>
 				<h4>Tools and Technologies</h4>
 				<p>
-					<ul>
-						<li>Unity 2020.3.8f1 + Unity Hub, Free license (student or personal)</li>
-						<li>No special hardware needed but does help</li>
-						<li>Selected haven't used before and chose FPS pack (description of prior use)</li>
-					</ul>
+					For this project the tools used will be Unity Version 2020.3.8f1 which can be downloaded for free using a free license for students or another option that could be chosen is personal. Besides this no other software is needed, although whilst downloading unity it comes with Visual Studio which allows you to code in C#. In terms of hardware a computer is needed, but it does not need to have really good specs as unity is able to be run on a 2015 MacBook air (known from past experience). Upon opening unity you are greeted with package options and the FPS option was chosen although a new project was made without using the presets of this package for the prototype. As creating applications or more specifically games is a passion of many of our group members, we all have some experience although Ryan was the only one who had used unity before. Ryan - I have used unity in year 9 whilst creating my own FPS zombie game, beyond that I have created many other games all of which were made on other platforms using different coding languages, so I had to relearn a few things before starting this project.
 				</p>
 				<h4>Testing</h4>
 				<p>
@@ -417,7 +440,16 @@ For this we would make use of ‘Usability Tests’.
 				</p>
 				<h4>Skills and Jobs</h4>
 				<p>
-					
+					Designer| Programmer| Database Administrator| Marketer/Advertiser
+				</p>
+				<p>
+					It is believed that these 4 roles will be required for the advancement to the next phase of our project.
+				</p>
+				<p>
+					As the project is still in its early stages, a designer will be required to brainstorm ideas of creativity to ensure that the program stands out, performs well, is of good consistency standards and has fulfilled the program's intended function/purpose. A programmer is an essential to have for this project, for coding and troubleshooting the program, making sure that its performance is bug/error-free and that it runs accordingly. Pulling our focus away from the program’s design and coding, we have listed a database administrator as an essential position for our project to advance. The reason for having a DBA as a part of the project is due to the program’s nature consisting of recording of stats and data that would later need to be calculated and presented to the user as their result/ performance analysis. The presentation of this data is crucial and can be considered the focus of this project, it enables users to keep track of and see their statistical improvements. One position that branches off from the IT area is a marketer/advertiser/ marketing team, once the program is up and running the next step would be to somehow release it with succession and deliver it to its intended audience and develop a user base.
+				</p>
+				<p>
+					It would be ideal for all 4 of these positions to work together and provide their each and own view/standpoint on any improvements/ opinions on the project as it would be nice and helpful to have the many opinions from different perspectives, improvements can always be considered, and if needed, adjusted/modified and implemented before the release of the project.
 				</p>
 			 </div>
 		 </body>
